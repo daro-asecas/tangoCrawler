@@ -1,3 +1,4 @@
+// eslint ignore no-console
 import puppeteer from 'puppeteer';
 
 // (async () => {
@@ -33,99 +34,91 @@ import puppeteer from 'puppeteer';
 // })();
 
 import fs from 'fs';
-import { title } from 'process';
 
 async function searchViator(searchTerm) {
-  let results
-  const browser = await puppeteer.launch()
-  const page = await browser.newPage()
-  const urlSearched = "https://www.viator.com/es-ES/searchResults/all?text="+searchTerm
+	let results;
+	const browser = await puppeteer.launch();
+	const page = await browser.newPage();
+	const urlSearched = `https://www.viator.com/es-ES/searchResults/all?text=${searchTerm}`;
 
-  await page.goto(urlSearched)
+	await page.goto(urlSearched);
 
-  const resultPhrase = await page.evaluate (() => {
-    return document.querySelector(".title-count").textContent
-  })
+	const resultPhrase = await page.evaluate(
+		() => document.querySelector('.title-count').textContent
+	);
 
-  const resultNumber = (() => {
-    const start = resultPhrase.search("de") + 3
-    const end = resultPhrase.search(" resultados ")
-    return Number(resultPhrase.slice(start,end).replace(".",""))
-  })()
+	const resultNumber = (() => {
+		const start = resultPhrase.search('de') + 3;
+		const end = resultPhrase.search(' resultados ');
+		return Number(resultPhrase.slice(start, end).replace('.', ''));
+	})();
 
-  const resultShowedNumber = ((resultPhrase) => {
-    const start = resultPhrase.search(" - ") + 3
-    const end = resultPhrase.search("de")
-    return Number(resultPhrase.slice(start,end).replace(".",""))
-  })
+	const resultShowedNumber = (resultPhrase) => {
+		const start = resultPhrase.search(' - ') + 3;
+		const end = resultPhrase.search('de');
+		return Number(resultPhrase.slice(start, end).replace('.', ''));
+	};
 
-  let showing = resultShowedNumber(resultPhrase)
+	let showing = resultShowedNumber(resultPhrase);
 
-  let clicks = 0
-  let errors = 0
-  showMoreResults()
-  async function showMoreResults() {
+	let clicks = 0;
+	let errors = 0;
+	showMoreResults();
+	async function showMoreResults() {
+		const resultPhrase = await page.evaluate(
+			(document) => document.querySelector('.title-count').textContent
+		);
 
-    const resultPhrase = await page.evaluate (() => {
-      return document.querySelector(".title-count").textContent
-    })
+		let firstError = false;
+		showing = resultShowedNumber(resultPhrase);
 
-    let firstError = false
-    showing = resultShowedNumber(resultPhrase)
+		if (showing != resultNumber) {
+			try {
+				await page.click('.next-page-button');
+				firstError = false;
+				clicks += 1;
+				console.log(`Clicks: ${clicks}`);
+				console.log(`Sh:${showing}`);
+				console.log(`RN: ${resultNumber}`);
+			} catch (error) {
+				console.error(error);
+				firstError = true;
+				errors += 1;
+				console.log(`Errors: ${errors}`);
+			}
 
-    if (showing!=resultNumber) {
+			// await page.waitForFunction(() => document.querySelectorAll("#productsList h2 > a").length > showing);
+			// console.log("se mayor, sigo")
+			// document.querySelector('.next-page-button').click();
+			setTimeout(showMoreResults, firstError ? 700 : 300);
+			// showMoreResults()
+		} else {
+			console.log(`Sh:${showing}`);
+			console.log('grabArray');
+			grabArray();
+			// console.log("grabArray")
+		}
 
-      try{
-        await page.click('.next-page-button')
-        firstError = false
-        clicks = clicks+1
-        console.log("Clicks: "+clicks)
-        console.log("Sh:"+showing)
-        console.log("RN: "+resultNumber)
+		/// /////////////// Recoger array de {title, url}
+		async function grabArray() {
+			results = await page.evaluate((document) => {
+				const anchors = Array.from(document.querySelectorAll('#productsList h2 > a'));
+				return anchors.map((anchor) => {
+					const title = anchor.textContent;
+					return {
+						title,
+						url: anchor.href,
+					};
+				});
+			});
 
-
-      } catch {
-        firstError = true
-        errors = errors+1
-        console.log("Errors: "+errors)
-      }
-
-      // await page.waitForFunction(() => document.querySelectorAll("#productsList h2 > a").length > showing);
-      // console.log("se mayor, sigo")
-      // document.querySelector('.next-page-button').click();
-      setTimeout(showMoreResults, firstError?700:300)
-      // showMoreResults()
-    } else {
-      console.log("Sh:"+showing)
-      console.log("grabArray")
-      grabArray()
-      // console.log("grabArray")
-    }
-
-////////////////// Recoger array de {title, url}
-    async function grabArray() {
-      results = await page.evaluate (() => {
-        const anchors = Array.from(document.querySelectorAll("#productsList h2 > a"))
-        return anchors.map((anchor) => {
-          const title = anchor.textContent
-          return {
-            title,
-            url: anchor.href
-          }
-        })
-      })
-
-      await browser.close()
-      fs.writeFileSync("results.json", JSON.stringify(results,null,2))
-      console.log(results)
-      console.log(results.length)
-      fs.writeFileSync('data/viatorTangoResults.json', JSON.stringify(results,null,2));
-    }
-
-  }
-
-
-
+			await browser.close();
+			fs.writeFileSync('results.json', JSON.stringify(results, null, 2));
+			console.log(results);
+			console.log(results.length);
+			fs.writeFileSync('data/viatorTangoResults.json', JSON.stringify(results, null, 2));
+		}
+	}
 }
 
-searchViator("tango");
+searchViator('tango');
