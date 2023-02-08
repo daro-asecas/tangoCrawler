@@ -33,15 +33,22 @@ import puppeteer from 'puppeteer';
 // })();
 
 import fs from 'fs';
-import { title } from 'process';
 
-async function searchViator(searchTerm) {
-  let results
+export const buildBaseUrl = (searchTerm) => "https://www.viator.com/es-ES/searchResults/all?text=" + searchTerm
+
+export const puppeteerInit = async (searchTerm) => {
   const browser = await puppeteer.launch()
   const page = await browser.newPage()
-  const urlSearched = "https://www.viator.com/es-ES/searchResults/all?text="+searchTerm
+  const urlSearched = buildBaseUrl(searchTerm)
 
   await page.goto(urlSearched)
+  return page
+}
+
+export async function searchViator(searchTerm) {
+  let results
+
+  const page = await puppeteerInit(searchTerm);
 
   const resultPhrase = await page.evaluate (() => {
     return document.querySelector(".title-count").textContent
@@ -127,5 +134,3 @@ async function searchViator(searchTerm) {
 
 
 }
-
-searchViator("tango");

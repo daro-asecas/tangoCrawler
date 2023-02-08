@@ -48,13 +48,7 @@ async function obtainDetails(URL) {
     async function grabArray() {
       results = await page.evaluate (() => {
         const anchors = Array.from(document.querySelectorAll("#productsList h2 > a"))
-        return anchors.map((anchor) => {
-          const title = anchor.textContent
-          return {
-            title,
-            url: anchor.href
-          }
-        })
+        return anchorToResult(anchors)
       })
 
       await browser.close()
@@ -69,5 +63,8 @@ async function obtainDetails(URL) {
 
 
 }
+
+const anchorToResult = (anchors) =>
+  anchors.map(({ textContent, href }) => ({ title: textContent, url: href }));
 
 searchViator("tango");
