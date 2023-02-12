@@ -1,0 +1,23 @@
+{
+  "id": 1,
+  "name": "Espectáculo Tango Porteño con cena opcional y clase de tango",
+  "duration": "4 horas (aprox.)",
+  "overview": "Viva la pasión del auténtico tango argentino con un espectáculo nocturno en el glamuroso Tango Porteño, con traslado de ida y vuelta desde el hotel incluido. En primer lugar, colóquese los zapatos de baile para disfrutar de una clase de tango y aprenda algunos de los famosos pasos, antes de disfrutar de una deliciosa cena de 3 platos. Por último, prepárese para quedar maravillado ante los bailarines de clase mundial, vestidos con cuidados trajes y acompañados de una banda en directo, que evocan la magia de la edad de oro del tango.",
+  "overviewTags": [
+    "Participe en una clase tradicional de tango argentino en Tango Porteño",
+    "Disfruta de un espectáculo en vivo con más de 40 artistas y músicos.",
+    "Opte por incluir una comida gourmet de bistec argentino, una variedad de vinos y postres",
+    "Traslados de ida y vuelta al hotel incluidos para mayor comodidad."
+  ],
+  "offeredIn": [
+    "Inglés",
+    "Español"
+  ],
+  "imgURLs": [
+    "https://media.tacdn.com/media/attractions-splice-spp-674x446/0a/39/7a/16.jpg",
+    "https://media.tacdn.com/media/attractions-splice-spp-674x446/0e/ea/f5/f0.jpg",
+    "https://media.tacdn.com/media/attractions-splice-spp-674x446/0e/ea/f6/14.jpg",
+    "https://media.tacdn.com/media/attractions-splice-spp-674x446/0e/ea/f6/13.jpg",
+    "https://media.tacdn.com/media/attractions-splice-spp-674x446/0a/39/7a/16.jpg"
+  ]
+}

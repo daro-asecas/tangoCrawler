@@ -1,136 +1,143 @@
 import puppeteer from 'puppeteer';
-
-// (async () => {
-//   const browser = await puppeteer.launch();
-//   const page = await browser.newPage();
-
-//   await page.goto('https://developers.google.com/web/');
-
-//   // Type into search box.
-//   await page.type('.devsite-search-field', 'Headless Chrome');
-
-//   // Wait for suggest overlay to appear and click "show all results".
-//   const allResultsSelector = '.devsite-suggest-all-results';
-//   await page.waitForSelector(allResultsSelector);
-//   await page.click(allResultsSelector);
-
-//   // Wait for the results page to load and display the results.
-//   const resultsSelector = '.gsc-results .gs-title';
-//   await page.waitForSelector(resultsSelector);
-
-//   // Extract the results from the page.
-//   const links = await page.evaluate(resultsSelector => {
-//     return [...document.querySelectorAll(resultsSelector)].map(anchor => {
-//       const title = anchor.textContent.split('|')[0].trim();
-//       return `${title} - ${anchor.href}`;
-//     });
-//   }, resultsSelector);
-
-//   // Print all the files.
-//   console.log(links.join('\n'));
-
-// //  await browser.close();
-// })();
-
 import fs from 'fs';
+
+let browser, page
 
 export const buildBaseUrl = (searchTerm) => "https://www.viator.com/es-ES/searchResults/all?text=" + searchTerm
 
-export const puppeteerInit = async (searchTerm) => {
-  const browser = await puppeteer.launch()
-  const page = await browser.newPage()
-  const urlSearched = buildBaseUrl(searchTerm)
+export const puppeteerInit = async (URL) => {
+    browser = await puppeteer.launch()
+    page = await browser.newPage()
+    if (URL) { await page.goto(URL) }
+  }
 
-  await page.goto(urlSearched)
-  return page
-}
+export const getNumberOfResults = ((resultPhrase) => {
+  const start = resultPhrase.search("de") + 3
+  const end = resultPhrase.search(" resultados ")
+  return Number(resultPhrase.slice(start,end).replace(".",""))
+})
 
-export async function searchViator(searchTerm) {
-  let results
+export const resultShowedNumber = ((resultPhrase) => {
+  const start = resultPhrase.search(" - ") + 3
+  const end = resultPhrase.search("de")
+  return Number(resultPhrase.slice(start,end).replace(".",""))
+})
 
-  const page = await puppeteerInit(searchTerm);
-
-  const resultPhrase = await page.evaluate (() => {
-    return document.querySelector(".title-count").textContent
-  })
-
-  const resultNumber = (() => {
-    const start = resultPhrase.search("de") + 3
-    const end = resultPhrase.search(" resultados ")
-    return Number(resultPhrase.slice(start,end).replace(".",""))
-  })()
-
-  const resultShowedNumber = ((resultPhrase) => {
-    const start = resultPhrase.search(" - ") + 3
-    const end = resultPhrase.search("de")
-    return Number(resultPhrase.slice(start,end).replace(".",""))
-  })
-
-  let showing = resultShowedNumber(resultPhrase)
-
+export async function searchViator(searchTerm, maxProgramsToGet, isTest) { // test es un boolean que se usa para hacer test unitarios
   let clicks = 0
   let errors = 0
-  showMoreResults()
+  let results
+
+  const urlSearched = buildBaseUrl(searchTerm)
+  await puppeteerInit(urlSearched);
+
+  const resultPhrase = await page.evaluate (() => {return document.querySelector(".title-count").textContent})
+
+  const numberOfResults = getNumberOfResults(resultPhrase, maxProgramsToGet)
+
+
+  /*// Esta es la definicion recursiva, pero era mas complicado para invocar grabArray desde afuera de la funcion, al terminar
+  // async function showMoreResults() {
+    
+    //   const resultPhrase = await page.evaluate (() => {
+      //     return document.querySelector(".title-count").textContent
+      //   })
+
+  //   let firstError = false
+  //   showing = resultShowedNumber(resultPhrase)
+
+  //   if (showing<70) {
+  //   // if (showing!=numberOfResults) {
+
+  //     try{
+  //       const button = await page.waitForSelector('.next-page-button')
+  //         .then (async () => {await page.click('.next-page-button')})
+  //         .then (()=>{
+  //           firstError = false
+  //           clicks = clicks+1
+  //           console.log("-------------------------------------------")
+  //           console.log(`Clicks: ${clicks}`)
+  //           console.log(`Showing: ${showing} of ${numberOfResults}, adding resuts`)
+  //           console.log("-------------------------------------------")
+  //         })
+  //     } catch (error) {
+  //       firstError = true
+  //       errors = errors+1
+  //       console.log(`Errors: ${errors}`)
+  //     } finally {
+  //       setTimeout(showMoreResults, firstError?700:150)
+  //     }
+  //   } else {
+  //     console.log(`Showing: ${showing} of ${numberOfResults}`)
+  //     console.log("-------------------------------------------")
+  //     console.log("grabArray")
+  //     grabArray()
+  //   }
+  // }
+  */
+
   async function showMoreResults() {
-
-    const resultPhrase = await page.evaluate (() => {
-      return document.querySelector(".title-count").textContent
-    })
-
+    let showing = resultShowedNumber(resultPhrase)
     let firstError = false
-    showing = resultShowedNumber(resultPhrase)
 
-    if (showing!=resultNumber) {
-
+    while (showing < maxProgramsToGet && showing < numberOfResults) {
       try{
-        await page.click('.next-page-button')
-        firstError = false
-        clicks = clicks+1
-        console.log("Clicks: "+clicks)
-        console.log("Sh:"+showing)
-        console.log("RN: "+resultNumber)
-
-
-      } catch {
+        const resultPhrase = await page.evaluate (() => {return document.querySelector(".title-count").textContent})
+        const button = await page.waitForSelector('.next-page-button')
+          .then (async () => {await page.click('.next-page-button')})
+          .then (()=>{
+            firstError = false
+            clicks = clicks+1
+            console.log("-------------------------------------------")
+            console.log(`Clicks: ${clicks}`)
+            console.log(`Showing: ${showing} of ${numberOfResults}, adding resuts`)
+            console.log("-------------------------------------------")
+          })
+      } catch (error) {
         firstError = true
         errors = errors+1
-        console.log("Errors: "+errors)
+        console.log(`Errors: ${errors}`)
+      } finally {
+        await new Promise(r => setTimeout(r, firstError?700:150))
+        showing = resultShowedNumber(resultPhrase)
       }
-
-      // await page.waitForFunction(() => document.querySelectorAll("#productsList h2 > a").length > showing);
-      // console.log("se mayor, sigo")
-      // document.querySelector('.next-page-button').click();
-      setTimeout(showMoreResults, firstError?700:300)
-      // showMoreResults()
-    } else {
-      console.log("Sh:"+showing)
-      console.log("grabArray")
-      grabArray()
-      // console.log("grabArray")
     }
-
-////////////////// Recoger array de {title, url}
-    async function grabArray() {
-      results = await page.evaluate (() => {
-        const anchors = Array.from(document.querySelectorAll("#productsList h2 > a"))
-        return anchors.map((anchor) => {
-          const title = anchor.textContent
-          return {
-            title,
-            url: anchor.href
-          }
-        })
-      })
-
-      await browser.close()
-      fs.writeFileSync("results.json", JSON.stringify(results,null,2))
-      console.log(results)
-      console.log(results.length)
-      fs.writeFileSync('data/viatorTangoResults.json', JSON.stringify(results,null,2));
-    }
+    console.log(`Showing: ${showing} of ${numberOfResults}.`)
+    console.log("Grabbing Array")
+    console.log("-------------------------------------------")
 
   }
 
+  async function grabArray() {
+    return await page.evaluate ((maxProgramsToGet) => {
+      let anchors = Array.from(document.querySelectorAll("#productsList h2 > a"))
+      console.log("maxProgramsToGet = "+maxProgramsToGet)
+      console.log(typeof(maxProgramsToGet))
+      console.log(maxProgramsToGet!=0)
+      if (typeof(maxProgramsToGet)==='number' && maxProgramsToGet!=0) {
+        anchors = anchors.slice(0, maxProgramsToGet)
+        console.log(anchors)
+      }
+      return anchors.map((anchor) => {
+        const title = anchor.textContent
+        return {
+          title,
+          url: anchor.href
+        }
+      })
+    }, maxProgramsToGet)
+  }
 
+  async function closeAndSave(results) {
+    await browser.close()
+    fs.writeFileSync("data/viatorTangoResults.json", JSON.stringify(results,null,2))
+    console.log(`Total items saved: ${results.length}`)
+  }
 
+  if (!isTest) { await showMoreResults() }
+
+  results = await grabArray()
+  
+  if (!isTest) { await closeAndSave(results)
+  } else { return results }
 }
