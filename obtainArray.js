@@ -1,3 +1,4 @@
+// eslint ignore no-console
 import puppeteer from 'puppeteer';
 import fs from 'fs';
 
