@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "name": "Espectáculo Tango Porteño con cena opcional y clase de tango",
     "duration": "4 horas (aprox.)",
     "overview": "Viva la pasión del auténtico tango argentino con un espectáculo nocturno en el glamuroso Tango Porteño, con traslado de ida y vuelta desde el hotel incluido. En primer lugar, colóquese los zapatos de baile para disfrutar de una clase de tango y aprenda algunos de los famosos pasos, antes de disfrutar de una deliciosa cena de 3 platos. Por último, prepárese para quedar maravillado ante los bailarines de clase mundial, vestidos con cuidados trajes y acompañados de una banda en directo, que evocan la magia de la edad de oro del tango.",
@@ -9,6 +10,8 @@
       "Opte por incluir una comida gourmet de bistec argentino, una variedad de vinos y postres",
       "Traslados de ida y vuelta al hotel incluidos para mayor comodidad."
     ],
+    "included": [],
+    "notIncluded": [],
     "offeredIn": [
       "Inglés",
       "Español"
@@ -20,10 +23,10 @@
       "https://media.tacdn.com/media/attractions-splice-spp-674x446/0e/ea/f6/13.jpg",
       "https://media.tacdn.com/media/attractions-splice-spp-674x446/0a/39/7a/16.jpg"
     ],
-    "realLink": "https://www.viator.com/es-ES/tours/Buenos-Aires/Tango-Porteo-Tango-Show-with-Optional-Dinner-and-Tango-Class-in-Buenos-Aires/d901-5674P91",
-    "id": 1
+    "realLink": "https://www.viator.com/es-ES/tours/Buenos-Aires/Tango-Porteo-Tango-Show-with-Optional-Dinner-and-Tango-Class-in-Buenos-Aires/d901-5674P91"
   },
   {
+    "id": 2,
     "name": "Clase de tango privada",
     "duration": "1 hora (aprox.)",
     "overview": "Para principiantes tímidos que desean aprender lo básico del tango en un ambiente de baja presión o bailarines avanzados que buscan mejorar sus movimientos, una clase privada de tango en Buenos Aires es una excelente manera de satisfacer sus necesidades. Aprenda los pasos de tango de un instructor profesional que se adapta al nivel que usted necesite, y obtenga una perspectiva local sobre la importancia del tango para la cultura argentina mientras baila.",
@@ -33,6 +36,8 @@
       "Ideal para todos los niveles.",
       "Excursión privada solo para su grupo."
     ],
+    "included": [],
+    "notIncluded": [],
     "offeredIn": [
       "Inglés",
       "Español"
@@ -44,75 +49,6 @@
       "https://media.tacdn.com/media/attractions-splice-spp-674x446/09/92/a8/97.jpg",
       "https://media.tacdn.com/media/attractions-splice-spp-674x446/09/92/a8/81.jpg"
     ],
-    "realLink": "https://www.viator.com/es-ES/tours/Buenos-Aires/Private-Tango-lesson/d901-68122P3",
-    "id": 2
-  },
-  {
-    "name": "Evite las colas: Boleto de espectáculo de tango en Señor Tango con cena opcional",
-    "duration": "De 2 a 4 horas (aprox.)",
-    "overview": "Asegúrate de participar en un show de tango durante tu estadía en Buenos Aires reservando boletos para el señor Tango con anticipación. Disfrutarás de la admisión sin colas en esta presentación obligada, con música en vivo y baile de tango. Beber vino y refrescos proporcionados; Opta por agregar la cena si quieres para una noche con todo incluido.",
-    "overviewTags": [
-      "Boleto de admisión al espectáculo del señor Tango.",
-      "La admisión sin colas ahorra un valioso tiempo de vacaciones",
-      "Vino y refrescos incluidos.",
-      "Opta por añadir la cena a tu paquete."
-    ],
-    "offeredIn": [
-      "Inglés",
-      "Español"
-    ],
-    "imgURLs": [
-      "https://media.tacdn.com/media/attractions-splice-spp-674x446/07/94/cb/28.jpg",
-      "https://media.tacdn.com/media/attractions-splice-spp-674x446/07/94/cb/35.jpg",
-      "https://media.tacdn.com/media/attractions-splice-spp-674x446/07/94/cb/32.jpg",
-      "https://media.tacdn.com/media/attractions-splice-spp-674x446/07/94/cc/ed.jpg",
-      "https://media.tacdn.com/media/attractions-splice-spp-674x446/07/94/cb/28.jpg"
-    ],
-    "realLink": "https://www.viator.com/es-ES/tours/Buenos-Aires/Tango-Show-at-Senor-Tango-with-optional-Dinner/d901-14659P24",
-    "id": 3
-  },
-  {
-    "name": "Lección de tango con brunch. ¡Sé un verdadero bailarín de tango!",
-    "duration": "2 horas (aprox.)",
-    "overview": "Aprende a bailar como un verdadero porteño. Esta lección privada de tango se lleva a cabo en el corazón de Buenos Aires y le enseña no solo los movimientos sino también la historia y el significado cultural del tango argentino. Después de la lección, serás recompensado con un brunch lleno de buena comida y conversación.",
-    "overviewTags": [
-      "Aprende a bailar tango en el corazón de Buenos Aires",
-      "Lección privada, exclusivamente para tu fiesta",
-      "Incluye un brunch ligero después de la lección de tango.",
-      "Aprende sobre la historia y el significado cultural del tango."
-    ],
-    "offeredIn": [
-      "Inglés",
-      "Francés",
-      "Español"
-    ],
-    "imgURLs": [
-      "https://media.tacdn.com/media/attractions-splice-spp-674x446/07/17/8e/54.jpg",
-      "https://media.tacdn.com/media/attractions-splice-spp-674x446/07/17/8e/5a.jpg",
-      "https://media.tacdn.com/media/attractions-splice-spp-674x446/07/17/8e/63.jpg",
-      "https://media.tacdn.com/media/attractions-splice-spp-674x446/0c/07/e8/b2.jpg",
-      "https://media.tacdn.com/media/attractions-splice-spp-674x446/07/17/8e/54.jpg"
-    ],
-    "realLink": "https://www.viator.com/es-ES/tours/Buenos-Aires/Tango-Lesson-be-a-true-tango-dancer/d901-122712P2",
-    "id": 4
-  },
-  {
-    "name": "Aljibe Tango Dinner & Show (Espectáculo de tango más antiguo de Buenos Aires)",
-    "duration": "3 horas (aprox.)",
-    "overview": "Aljibe Tango está ubicado en el corazón del barrio de San Telmo, en un conventillo histórico remodelado que es un edificio clásico de la cultura porteña. Cuenta con 2 orquestas, bailarines, cantantes y también un Show Gaucho.Es una gran opción para aquellos que prefieren un show de tango más temprano. La cena es a partir de las 19:15. El espectáculo comienza a las 20:15 y finaliza a las 21:15.",
-    "overviewTags": [],
-    "offeredIn": [
-      "Inglés",
-      "Español"
-    ],
-    "imgURLs": [
-      "https://media.tacdn.com/media/attractions-splice-spp-674x446/0f/06/3c/3b.jpg",
-      "https://media.tacdn.com/media/attractions-splice-spp-674x446/0f/06/3c/9a.jpg",
-      "https://media.tacdn.com/media/attractions-splice-spp-674x446/0f/06/3c/cb.jpg",
-      "https://media.tacdn.com/media/attractions-splice-spp-674x446/0f/06/3b/db.jpg",
-      "https://media.tacdn.com/media/attractions-splice-spp-674x446/0f/06/3c/3b.jpg"
-    ],
-    "realLink": "https://www.viator.com/es-ES/tours/Buenos-Aires/Senor-Tango-Buenos-Aires-Dinner-and-Show/d901-7532P62",
-    "id": 5
+    "realLink": "https://www.viator.com/es-ES/tours/Buenos-Aires/Private-Tango-lesson/d901-68122P3"
   }
 ]

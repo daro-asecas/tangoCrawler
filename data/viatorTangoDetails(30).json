@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "name": "Show de Tango en Aljibe Tango con cena opcional en Buenos Aires",
+    "duration": "De 1 a 3 horas (aprox.)",
+    "overview": "Viajaremos a través de la historia del Tango y nos meteremos dentro del apasionante mundo del 2×4.Disfrutaremos de una maravillosa orquesta en vivo junto con una increíble compañía de baile, quienes te harán disfrutar y bailar desde tu silla.Queremos que sientas el Tango en el cuerpo como un porteño, porque el Tango se vive, se sufre, se llora… el Tango duele (pero se siente bien!).",
+    "included": [],
+    "notIncluded": [],
+    "offeredIn": [],
+    "imgURLs": [
+      "https://media.tacdn.com/media/attractions-splice-spp-674x446/0f/78/91/04.jpg",
+      "https://media.tacdn.com/media/attractions-splice-spp-674x446/0f/78/91/06.jpg",
+      "https://media.tacdn.com/media/attractions-splice-spp-674x446/0f/78/91/0a.jpg",
+      "https://media.tacdn.com/media/attractions-splice-spp-674x446/0f/78/91/0d.jpg",
+      "https://media.tacdn.com/media/attractions-splice-spp-674x446/0f/78/91/04.jpg"
+    ],
+    "realLink": "https://www.viator.com/es-ES/tours/Buenos-Aires/Tango-Show-at-Gala-Tango-with-optional-dinner-in-Buenos-Aires/d901-221874P15"
+  },
+  {
+    "id": 2,
+    "name": "Cena Show de Tango en Tango Porteño - sin traslados -",
+    "duration": "4 horas (aprox.)",
+    "overview": "Disfrute de una maravillosa cena show de tango en un lugar muy típico de Buenos Aires, traslados no incluidos.",
+    "included": [],
+    "notIncluded": [],
+    "offeredIn": [],
+    "imgURLs": [
+      "https://media.tacdn.com/media/attractions-splice-spp-674x446/0a/95/d3/e9.jpg",
+      "https://media.tacdn.com/media/attractions-splice-spp-674x446/0a/95/d3/f1.jpg",
+      "https://media.tacdn.com/media/attractions-splice-spp-674x446/0a/95/d5/bb.jpg",
+      "https://media.tacdn.com/media/attractions-splice-spp-674x446/0a/95/d3/e9.jpg",
+      "https://media.tacdn.com/media/attractions-splice-spp-674x446/0a/95/d3/f1.jpg"
+    ],
+    "realLink": "https://www.viator.com/es-ES/tours/Buenos-Aires/Dinner-Tango-Show-in-Tango-Porteno-no-transfers/d901-34949P341"
+  }
+]

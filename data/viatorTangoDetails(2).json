@@ -1,6 +1,6 @@
 [
   {
-    "id": 0,
+    "id": 1,
     "name": "Espectáculo Tango Porteño con cena opcional y clase de tango",
     "duration": "4 horas (aprox.)",
     "overview": "Viva la pasión del auténtico tango argentino con un espectáculo nocturno en el glamuroso Tango Porteño, con traslado de ida y vuelta desde el hotel incluido. En primer lugar, colóquese los zapatos de baile para disfrutar de una clase de tango y aprenda algunos de los famosos pasos, antes de disfrutar de una deliciosa cena de 3 platos. Por último, prepárese para quedar maravillado ante los bailarines de clase mundial, vestidos con cuidados trajes y acompañados de una banda en directo, que evocan la magia de la edad de oro del tango.",
@@ -10,6 +10,8 @@
       "Opte por incluir una comida gourmet de bistec argentino, una variedad de vinos y postres",
       "Traslados de ida y vuelta al hotel incluidos para mayor comodidad."
     ],
+    "included": [],
+    "notIncluded": [],
     "offeredIn": [
       "Inglés",
       "Español"
@@ -19,13 +21,12 @@
       "https://media.tacdn.com/media/attractions-splice-spp-674x446/0e/ea/f5/f0.jpg",
       "https://media.tacdn.com/media/attractions-splice-spp-674x446/0e/ea/f6/14.jpg",
       "https://media.tacdn.com/media/attractions-splice-spp-674x446/0e/ea/f6/13.jpg",
-      "https://media.tacdn.com/media/attractions-splice-spp-674x446/0e/ea/f6/11.jpg",
       "https://media.tacdn.com/media/attractions-splice-spp-674x446/0a/39/7a/16.jpg"
     ],
     "realLink": "https://www.viator.com/es-ES/tours/Buenos-Aires/Tango-Porteo-Tango-Show-with-Optional-Dinner-and-Tango-Class-in-Buenos-Aires/d901-5674P91"
   },
   {
-    "id": 1,
+    "id": 2,
     "name": "Clase de tango privada",
     "duration": "1 hora (aprox.)",
     "overview": "Para principiantes tímidos que desean aprender lo básico del tango en un ambiente de baja presión o bailarines avanzados que buscan mejorar sus movimientos, una clase privada de tango en Buenos Aires es una excelente manera de satisfacer sus necesidades. Aprenda los pasos de tango de un instructor profesional que se adapta al nivel que usted necesite, y obtenga una perspectiva local sobre la importancia del tango para la cultura argentina mientras baila.",
@@ -35,6 +36,8 @@
       "Ideal para todos los niveles.",
       "Excursión privada solo para su grupo."
     ],
+    "included": [],
+    "notIncluded": [],
     "offeredIn": [
       "Inglés",
       "Español"
@@ -44,7 +47,6 @@
       "https://media.tacdn.com/media/attractions-splice-spp-674x446/07/a1/b7/e1.jpg",
       "https://media.tacdn.com/media/attractions-splice-spp-674x446/09/92/a8/93.jpg",
       "https://media.tacdn.com/media/attractions-splice-spp-674x446/09/92/a8/97.jpg",
-      "https://media.tacdn.com/media/attractions-splice-spp-674x446/0f/e8/60/38.jpg",
       "https://media.tacdn.com/media/attractions-splice-spp-674x446/09/92/a8/81.jpg"
     ],
     "realLink": "https://www.viator.com/es-ES/tours/Buenos-Aires/Private-Tango-lesson/d901-68122P3"

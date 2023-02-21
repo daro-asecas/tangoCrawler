@@ -1,0 +1,47 @@
+
+    -   Unexpected use of file extension "js" for "../xxxxxxx.js"
+    no esta bien meterle la extension?
+
+
+    -   Unary operator '++' used
+            Por que esta mal?
+
+
+    -   'xxxx' is already declared in the upper scope
+            Le desactivo la regla no-shadow
+            en las funciones, las defino con un parametro x que se llama igual que la variable que le voy a meter al invocar. Esta mal eso?
+                function asd(x) {x*2}
+                asd(x)
+
+
+    -   Function declared in a loop contains unsafe references to variable(s) 'firstError'
+            regla: no-loop-func
+            esto pasa en variables que estan en un scope superior, ya que necesito que sean comunes a todas las vueltas del while.
+
+
+    -   Return values from promise executor functions cannot be read
+            no-promise-executor-return
+            Me tira este error por las funciones que uso para esperar una cantidad de milisegundos
+                await new Promise((r) => setTimeout(r, 700));
+
+    
+    -   Problemas con el for..in
+
+        -   for..in loops iterate over the entire prototype chain, which is virtually never what you want.
+                reglas:     no-restricted-syntax   y   guard-for-in
+                el for..in al parecer puede incluir propiedades inesperadas en los elementos a iterar.
+                En su momento tuve que hacer todo con for..in porque el forEach no awaitea bien.
+
+        -   Unexpected `await` inside a loop
+                A veces necesito el await, aunque eso me limita a hacer los loops en serie en vez de en paralelo.
+                Deberìa ver como awaitear dentro del loop pero empezar todos los loops a la vez.
+
+        -   iterators/generators require regenerator-runtime, which is too heavyweight for this guide to allow them.
+            Separately, loops should be avoided in favor of array iterations
+                regla: no-restricted-syntax
+
+        -   for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array
+                regla: no-restricted-syntax
+
+        -   The body of a for-in should be wrapped in an if statement to filter unwanted properties from the prototype
+                regla: guard-for-in
