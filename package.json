@@ -8,7 +8,8 @@
 		"test": "mocha",
 		"start": "node main.js",
 		"format": "npx prettier --write .",
-		"lint": "eslint --fix ."
+		"lint": "eslint --fix .",
+		"prettier": "npx prettier --write ./*"
 	},
 	"author": "",
 	"license": "ISC",
@@ -26,6 +27,6 @@
 		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-plugin-react": "^7.32.2",
 		"mocha": "^10.2.0",
-		"prettier": "^2.8.3"
+		"prettier": "2.8.4"
 	}
 }

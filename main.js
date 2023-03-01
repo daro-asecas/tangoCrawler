@@ -11,17 +11,17 @@ const saveDetailsIn = './data/viatorTangoDetails(2).json';
 
 // OBTENER RESULTADOS DE BUSQUEDA
 if (doSearch) {
-  const results = await searchViator('tango', maxProgramsToGet);
-  saveInDotJSON(saveArrayOfUrlsIn, results);
-  console.log(`Total items saved: ${results.length}`); // eslint-disable-line
-  console.log('In file: ',`\x1b[32m${saveArrayOfUrlsIn}\x1b[0m`); // eslint-disable-line
+	const results = await searchViator('tango', maxProgramsToGet);
+	saveInDotJSON(saveArrayOfUrlsIn, results);
+	console.log(`Total items saved: ${results.length}`); // eslint-disable-line
+	console.log('In file: ', `\x1b[32m${saveArrayOfUrlsIn}\x1b[0m`); // eslint-disable-line
 }
 
 // OBTENER DETALLES DE ESOS RESULTADOS
 if (grabDetails) {
-  const arrayOfUrls = (await getDataFromDotJSON(saveArrayOfUrlsIn)).slice(0, maxProgramsToGet);
-  const details = await obtainDetailsOfAllPrograms(arrayOfUrls);
-  await saveInDotJSON(saveDetailsIn, details);
-  console.log(`Grabbed details from ${details.length} programs`); // eslint-disable-line
-  console.log('In file: ',`\x1b[32m${saveDetailsIn}\x1b[0m`); // eslint-disable-line
+	const arrayOfUrls = (await getDataFromDotJSON(saveArrayOfUrlsIn)).slice(0, maxProgramsToGet);
+	const details = await obtainDetailsOfAllPrograms(arrayOfUrls);
+	await saveInDotJSON(saveDetailsIn, details);
+	console.log(`Grabbed details from ${details.length} programs`); // eslint-disable-line
+	console.log('In file: ', `\x1b[32m${saveDetailsIn}\x1b[0m`); // eslint-disable-line
 }

@@ -1,0 +1,9 @@
+node_modules
+data
+.eslintrc
+.eslintrc.json
+.gitignore
+.prettierignore
+.prettierrc
+package-lock.json
+package.json
